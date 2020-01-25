@@ -1,14 +1,14 @@
-import 'package:backdrop/backdrop.dart';
+import 'package:backdrop_widget/backdrop.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new NavigationApp());
 
-class MyApp extends StatefulWidget {
+class NavigationApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<NavigationApp> {
   int _currentIndex = 0;
   final List<Widget> _frontLayers = [Widget1(), Widget2()];
 
@@ -16,6 +16,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Backdrop Demo',
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.system,
       home: BackdropScaffold(
         title: Text("Backdrop Navigation Example"),
         iconPosition: BackdropIconPosition.leading,

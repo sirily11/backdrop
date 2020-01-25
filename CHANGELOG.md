@@ -1,3 +1,8 @@
+## [0.3.0] - 25 January 2020
+
+* Added animation for the backdrop color animation
+* Added duration parameter
+
 ## [0.2.8] - 16 January 2020
 
 * disabling focus on `backLayer` when not visible

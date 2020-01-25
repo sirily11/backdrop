@@ -1,4 +1,4 @@
-library backdrop;
+library backdrop_widget;
 
 import 'dart:async';
 
@@ -19,6 +19,8 @@ class Backdrop extends InheritedWidget {
 
 class BackdropScaffold extends StatefulWidget {
   final AnimationController controller;
+
+  /// App Bar Title
   final Widget title;
   final Widget backLayer;
   final Widget frontLayer;
@@ -29,21 +31,24 @@ class BackdropScaffold extends StatefulWidget {
   final bool stickyFrontLayer;
   final Curve animationCurve;
 
-  BackdropScaffold({
-    this.controller,
-    this.title,
-    this.backLayer,
-    this.frontLayer,
-    this.actions = const <Widget>[],
-    this.headerHeight = 32.0,
-    this.frontLayerBorderRadius = const BorderRadius.only(
-      topLeft: Radius.circular(16.0),
-      topRight: Radius.circular(16.0),
-    ),
-    this.iconPosition = BackdropIconPosition.leading,
-    this.stickyFrontLayer = false,
-    this.animationCurve = Curves.linear,
-  });
+  /// Duration for animation
+  final int duration;
+
+  BackdropScaffold(
+      {this.controller,
+      this.title,
+      this.backLayer,
+      this.frontLayer,
+      this.actions = const <Widget>[],
+      this.headerHeight = 32.0,
+      this.frontLayerBorderRadius = const BorderRadius.only(
+        topLeft: Radius.circular(16.0),
+        topRight: Radius.circular(16.0),
+      ),
+      this.iconPosition = BackdropIconPosition.leading,
+      this.stickyFrontLayer = false,
+      this.animationCurve = Curves.linear,
+      this.duration = 100});
 
   @override
   _BackdropScaffoldState createState() => _BackdropScaffoldState();
@@ -65,7 +70,9 @@ class _BackdropScaffoldState extends State<BackdropScaffold>
     if (widget.controller == null) {
       _shouldDisposeController = true;
       _controller = AnimationController(
-          vsync: this, duration: Duration(milliseconds: 100), value: 1.0);
+          vsync: this,
+          duration: Duration(milliseconds: widget.duration),
+          value: 1.0);
     } else {
       _controller = widget.controller;
     }
@@ -143,7 +150,7 @@ class _BackdropScaffoldState extends State<BackdropScaffold>
           child: Container(
             decoration: BoxDecoration(
               borderRadius: widget.frontLayerBorderRadius,
-              color: Colors.grey.shade200.withOpacity(0.7),
+              color: Theme.of(context).disabledColor,
             ),
           ),
         ),
@@ -158,7 +165,10 @@ class _BackdropScaffoldState extends State<BackdropScaffold>
         color: Theme.of(context).primaryColor,
         child: Column(
           children: <Widget>[
-            Flexible(key: _backLayerKey, child: widget.backLayer ?? Container()),
+            Flexible(
+              key: _backLayerKey,
+              child: widget.backLayer ?? Container(),
+            ),
           ],
         ),
       ),
@@ -168,12 +178,14 @@ class _BackdropScaffoldState extends State<BackdropScaffold>
   Widget _buildFrontPanel(BuildContext context) {
     return Material(
       elevation: 12.0,
+      clipBehavior: Clip.hardEdge,
       borderRadius: widget.frontLayerBorderRadius,
-      child: Stack(
-        children: <Widget>[
-          widget.frontLayer,
-          _buildInactiveLayer(context),
-        ],
+      child: AnimatedContainer(
+        color: !isTopPanelVisible
+            ? Theme.of(context).disabledColor.withOpacity(0.3)
+            : Colors.transparent,
+        duration: Duration(milliseconds: widget.duration + 100),
+        child: widget.frontLayer,
       ),
     );
   }

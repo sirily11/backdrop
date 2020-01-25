@@ -1,29 +1,17 @@
 # backdrop
 
-[![pub.dev](https://img.shields.io/pub/v/backdrop?logo=flutter)](https://pub.dev/packages/backdrop)
-[![Gitlab Issues](https://img.shields.io/badge/dynamic/json?label=issues&query=%24.open_issues_count&url=https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%2Fprojects%2F7578401&logo=gitlab)](https://gitlab.com/daadu/backdrop/issues)
-[![Gitlab Contributors](https://img.shields.io/github/contributors/daadu/backdrop?logo=gitlab)](https://gitlab.com/daadu/backdrop/blob/master/AUTHORS)
-[![Gitlab Stars](https://img.shields.io/badge/dynamic/json?label=stars&query=%24.star_count&url=https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%2Fprojects%2F7578401&logo=gitlab)](https://gitlab.com/daadu/backdrop/-/starrers)
-[![Gitlab Forks](https://img.shields.io/badge/dynamic/json?label=forks&query=%24.forks_count&url=https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%2Fprojects%2F7578401&logo=gitlab)](https://gitlab.com/daadu/backdrop/-/forks)
+[Backdrop](https://material.io/design/components/backdrop.html) implementation in flutter.
 
-[Backdrop](https://material.io/design/components/backdrop.html) implementation in flutter. 
-
-This widget is in active development. Wait for the stable v1.0.0. ___Any contribution, idea, criticism or feedback is welcomed.___
-
-## Quick links
-
-| | |
-|-|-|
-| __package__ | https://pub.dev/packages/backdrop |
-| __Git Repo__ | https://gitlab.com/daadu/backdrop |
-| __Issue Tracker__ | https://gitlab.com/daadu/backdrop/issues |
-| Github Mirror Repo  | https://github.com/daadu/backdrop |
+Fork version of [flutter backdrop](https://gitlab.com/daadu/backdrop).
 
 ## Getting started
-Follow the medium article to [__Quickly Implement Backdrop in Flutter.__](https://medium.com/@daadu/backdrop-with-flutter-acfa9fee7d2f)
+
+Follow the medium article to [**Quickly Implement Backdrop in Flutter.**](https://medium.com/@daadu/backdrop-with-flutter-acfa9fee7d2f)
 
 ## Usage
+
 ### BackdropScaffold
+
 Use `BackdropScaffold` instead of the standard `Scaffold` in your app.
 A `backLayer` and a `frontLayer` have to be defined for the backdrop to work.
 
@@ -39,11 +27,13 @@ BackdropScaffold(
     iconPosition: BackdropIconPosition.leading,
 )
 ```
+
 <div align="center">
 <img src="https://gitlab.com/daadu/backdrop/raw/master/.gitlab/backdrop.gif"  width="500" alt="BackdropScaffold example">
 </div>
 
 ### Navigation with backdrop
+
 To use backdrop for navigation, use the provided `BackdropNavigationBackLayer` as `backLayer`.
 
 The `BackdropNavigationBackLayer` contains a property `items` representing the list elements shown on the back layer. The front layer has to be "manually" set depending on the current index, which can be accessed with the `onTap` callback.
@@ -86,6 +76,7 @@ class _MyAppState extends State<MyApp> {
 For more information, check out sample code in the [example directory](https://gitlab.com/daadu/backdrop/tree/master/example)
 
 ## Contribute
+
 1. You'll need a gitlab account. (Sorry, if you had to create one!!)
 2. Fork the [repository](https://gitlab.com/daadu/backdrop).
 3. Implement features from to-do, fix issues, etc.
@@ -95,9 +86,11 @@ For more information, check out sample code in the [example directory](https://g
 7. Become a hero!!
 
 ## Features and bugs
+
 Please file feature requests and bugs at the [issue tracker](https://gitlab.com/daadu/backdrop/issues).
 
 ## TODO
+
 - Properly document the usage of the widget in README.md
 - Properly document classes and public methods
 - ~~scaffoldKey provided to access scaffold directly~~

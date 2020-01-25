@@ -1,7 +1,9 @@
-import 'package:backdrop/backdrop.dart';
+import 'package:backdrop_widget/backdrop.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+import 'navigation.dart';
+
+void main() => runApp(new NavigationApp());
 
 class MyApp extends StatelessWidget {
   @override
